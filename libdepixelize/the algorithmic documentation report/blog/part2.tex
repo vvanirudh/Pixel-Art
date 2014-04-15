@@ -1,0 +1,135 @@
+Originally posted at
+\url{http://vinipsmaker.wordpress.com/2013/08/13/splines-extraction-on-kopf-lischinski-algorithm-part-2/}
+on \formatdate{13}{8}{2013}.
+
+\subsection{Once upon a time\ldots{} a polygon with holes appeared}
+
+The polygon-union described in \hyperref[blogpart1]{part 1} works correctly and
+there are no better answers than the correct answer, but these polygons were
+meant to be B-Splines and what have been done till now is insufficient.
+
+Consider the following image.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/polygon-holes.pdf}
+  \caption{Normal polygon (left) and bordered polygon (right)}
+\end{figure}
+
+The left polygon is the polygon what you see before and after the polygon-union.
+They are visually indistinguishable. The right polygon has an outline to allow
+you understand its internal representation. You can understand how the
+polygon-union generates a polygon with a ``hole'' seeing the right polygon.
+
+If the polygon-union don't generate visually identifiable pixels, then there
+shouldn't exist any problem, but when we convert the polygon to a B-Spline, some
+areas of the image won't be filled. The polygons won't fit correctly, like show
+in the image below.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/polygons-with-holes-and-splines.pdf}
+  \caption{After B-Spline conversion}
+\end{figure}
+
+The solution is to create some holes. With the representation of polygons used
+in libdepixelize, this task is very simple and the key operation to accomplish
+this goal is to find the ``edges that the polygon share with itself''. The
+following paragraphs explain this task.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/polygon-holes-conversion.pdf}
+\end{figure}
+
+The above image has 2 pairs of hidden points: pair <5, 6>, that is equal to pair
+<11, 10>, and pair <12, 13>, that is equal to pair <18, 17>.
+
+
+The algorithm outline is:
+
+\begin{enumerate}
+\item Iterate over the points and, for each point, try to find another point
+  that is equal to it. For each point
+  \begin{enumerate}
+  \item Get the internal sequence. To gather the internal sequence, just iterate
+    over more nodes to get the ``largest common edge''.
+  \item Make sure the ``largest common edge'' has a size greater than 1 (e.g. is
+    not only a common vertex, but a common edge). Use this sequence to construct
+    the internal ``hole'' (or holes, if more than one) polygon and then remove
+    it from the original polygon.
+  \end{enumerate}
+\end{enumerate}
+
+Beware that \emph{use a sequence to construct the internal ``hole'' polygon} is
+another algorithm (and ain't trivial). It goes like this (let's name it
+\emph{fill\_holes}):
+
+\begin{enumerate}
+\item Create an empty sequence of nodes. Let's name it \emph{hole}.
+\item Let's name the beginning of our input sequence \emph{region\_begin}.
+\item Iterate over the nodes of sequence and for each node:
+  \begin{enumerate}
+  \item Find another node equal to this one and if there is such node:
+    \begin{enumerate}
+    \item Let's name our new finding \emph{aux}.
+    \item Append a copy of the range from \emph{region\_begin} until the current
+      node (do \textbf{not} confuse the current node with \emph{aux}) into
+      \emph{hole}
+    \item We can see a common vertex: Current node and \emph{aux}. Find the
+      largest common edge and there will be references to two more nodes. Call
+      \emph{fill\_holes} with this new range.
+    \item Forget about the range between current node and \emph{aux}. We won't
+      see these points in the next iteration and \emph{region\_begin} will refer
+      to \emph{aux} from now on.
+    \end{enumerate}
+  \end{enumerate}
+\item Append the range from \emph{region\_begin} until the end of input
+  sequence into \emph{hole}.
+\item \emph{hole} is ready. Do something with it (e.g. store it).
+\end{enumerate}
+
+The \emph{fill\_holes} procedure is complicated and you should check
+libdepixelize's source code (\emph{HomogeneousSplines::\_fill\_holes}) to kill
+any ambiguity or doubt.
+
+\begin{itemize}
+\item Remark \#1: libdepixelize do the steps of the outmost algorithm (the one
+  removing nodes from the sequence) in backward order, to avoid too much moves
+  of elements in the internal vector.
+\item Remark \#2: The polygon is represented in clockwise order, but the holes
+  will be represented in counter-clockwise order, but there is no reason to
+  normalize. You can safely ignore this (de)normalization feature.
+\item Remark \#3: The reason behind the special procedure to make sure the
+  common sequence is an edge and not a vertex come from the fact that the code
+  to fix the position of   T-junction nodes creates a pattern where the polygon
+  shares a point with itself.
+\end{itemize}
+
+\subsection{And then, the polygon was meant to be a B-Spline}
+
+It's a chapter about splines extraction and it's fair to end with this step.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/evolution.pdf}
+  \caption{It's evolution, baby}
+\end{figure}
+
+The algorithm is very simple. The points you get through the polygon-union
+algorithm in \hyperref[blogpart1]{part 1} will be the control points of
+quadratic Bézier curves and the interpolating/ending points of each Bézier curve
+will be the middle points between two adjacent control points. This is the
+special case where all points are smooth. The image below can help you get the
+idea.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/points-location.pdf}
+  \caption{Locations of the B-Spline points}
+\end{figure}
+
+If you have non-smooth points, then all you need to do is interpret them as
+interpolating points, instead of control points. You'll have three interpolating
+points that are part of two straight lines. There is a bit more of theory to
+understand why the generated B-Spline is smooth.
