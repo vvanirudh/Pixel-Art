@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="12.144825"
+   height="8.0535812"
+   id="svg2991"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="points-location.svg"
+   inkscape:export-filename="points-location.png"
+   inkscape:export-xdpi="3557.479"
+   inkscape:export-ydpi="3557.479">
+  <defs
+     id="defs2993" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="45.254834"
+     inkscape:cx="6.0603033"
+     inkscape:cy="5.5275245"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-global="true"
+     inkscape:object-paths="false"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-right="1"
+     fit-margin-bottom="1"
+     inkscape:window-width="1326"
+     inkscape:window-height="745"
+     inkscape:window-x="40"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2996">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-517.80025,-624.14792)">
+    <g
+       id="g3820"
+       transform="translate(0.27719716,0)">
+      <path
+         sodipodi:nodetypes="cccccccccccccc"
+         id="path3000"
+         d="m 522.60714,625.39792 0.75,-0.25 0.75,0.25 0.125,0.375 0.125,0.375 0,1 -0.25,0.75 -0.75,0.25 -0.75,-0.25 0,-0.5 0.5,-0.5 0,-0.5 -0.5,-0.5 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ff0000;fill-opacity:1" />
+      <path
+         d="m 524.24325,625.39795 c 0,0.0752 -0.0609,0.13614 -0.13613,0.13614 -0.0752,0 -0.13614,-0.061 -0.13614,-0.13614 0,-0.0752 0.0609,-0.13614 0.13614,-0.13614 0.0752,0 0.13613,0.061 0.13613,0.13614 z"
+         sodipodi:ry="0.13613762"
+         sodipodi:rx="0.13613762"
+         sodipodi:cy="625.39795"
+         sodipodi:cx="524.10712"
+         id="path3800"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <path
+         d="m 524.49716,626.14795 c 0,0.0773 -0.0627,0.14004 -0.14004,0.14004 -0.0774,0 -0.14005,-0.0627 -0.14005,-0.14004 0,-0.0773 0.0627,-0.14004 0.14005,-0.14004 0.0773,0 0.14004,0.0627 0.14004,0.14004 z"
+         sodipodi:ry="0.14004387"
+         sodipodi:rx="0.14004387"
+         sodipodi:cy="626.14795"
+         sodipodi:cx="524.35712"
+         id="path3804"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <path
+         d="m 524.35283,625.78546 c 0,0.0644 -0.0522,0.11651 -0.1165,0.11651 -0.0643,0 -0.11651,-0.0522 -0.11651,-0.11651 0,-0.0643 0.0522,-0.11651 0.11651,-0.11651 0.0643,0 0.1165,0.0522 0.1165,0.11651 z"
+         sodipodi:ry="0.11650666"
+         sodipodi:rx="0.11650666"
+         sodipodi:cy="625.78546"
+         sodipodi:cx="524.23633"
+         id="path3806"
+         style="fill:#00ffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+    </g>
+    <path
+       d="m 524.68429,625.78546 a 0.44796297,0.44796297 0 1 1 -0.89592,0 0.44796297,0.44796297 0 1 1 0.89592,0 z"
+       sodipodi:ry="0.44796297"
+       sodipodi:rx="0.44796297"
+       sodipodi:cy="625.78546"
+       sodipodi:cx="524.23633"
+       id="path3808"
+       style="fill:#00ffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       transform="matrix(-1,0,0,-1,1043.5229,1254.9644)" />
+    <path
+       d="m 524.55261,625.39795 a 0.44549683,0.44549683 0 1 1 -0.89099,0 0.44549683,0.44549683 0 1 1 0.89099,0 z"
+       sodipodi:ry="0.44549683"
+       sodipodi:rx="0.44549683"
+       sodipodi:cy="625.39795"
+       sodipodi:cx="524.10712"
+       id="path3810"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       transform="matrix(-1,0,0,-1,1043.3937,1256.0914)" />
+    <text
+       xml:space="preserve"
+       style="font-size:0.96314526px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="520.20435"
+       y="629.48419"
+       id="text3812"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3814"
+         x="520.20435"
+         y="629.48419">Midpoint/endpoint</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:0.96314526px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="520.24481"
+       y="631.00116"
+       id="text3816"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3818"
+         x="520.24481"
+         y="631.00116">Control point</tspan></text>
+  </g>
+</svg>
