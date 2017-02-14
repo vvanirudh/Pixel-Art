@@ -1,6 +1,6 @@
 An implementation of the paper **Depixelizing Pixel Art** by Kopf and Lischinski. The implementation is purely in python and instructions are given below.
 
-![example_image](outputs/smw_bowser_input.png)
+![example_image](outputs/win31_setup_input.png)
 
 Instructions to run
 ===================
