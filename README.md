@@ -18,7 +18,8 @@ You can view some of the outputs that we have got, in the "outputs/" folder.
 Requirements
 ============
 - Python 2.7
-- pypng package
+- `pypng` : https://pypi.python.org/pypi/pypng
+- `networkx`: https://pypi.python.org/pypi/networkx/
 
 Citations
 =========
