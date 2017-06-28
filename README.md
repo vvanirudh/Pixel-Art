@@ -15,6 +15,11 @@ There are sample testcases (around 25) in the "testcases/" folder.
 
 You can view some of the outputs that we have got, in the "outputs/" folder.
 
+Requirements
+============
+- Python 2.7
+- pypng package
+
 Citations
 =========
 
