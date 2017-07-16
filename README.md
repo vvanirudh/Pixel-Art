@@ -20,6 +20,7 @@ Requirements
 - Python 2.7
 - `pypng` : https://pypi.python.org/pypi/pypng
 - `networkx`: https://pypi.python.org/pypi/networkx/
+- `svgwrite` : https://pypi.python.org/pypi/svgwrite/
 
 Citations
 =========
