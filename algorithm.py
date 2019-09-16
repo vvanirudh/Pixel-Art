@@ -273,3 +273,4 @@ class PixelData(object):
 				path.smooth = path.spline.copy()
 				continue
 			path.smooth_spline() # Smooth each path which was previosuly fit with a spline
+
