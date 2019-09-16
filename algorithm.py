@@ -140,17 +140,17 @@ class PixelData(object):
 
 	def deform_grid(self):
 		#This function deforms the grid as per the algorithm
-		for node in self.pixel_graph.nodes_iter():
+		for node in self.pixel_graph.nodes():
 			self.deform_cell(node) # Iterate through all the nodes in the graph and deform each of them
 
 		# Collapse all valence-2 nodes to get a more smoother image
 		removals = []
-		for node in self.grid_graph.nodes_iter():
+		for node in self.grid_graph.nodes():
 			if node in ((0, 0), (0, self.size[1]),
 						(self.size[0], 0), self.size):
 				# Skip corner nodes of teh image as they shouldn't be collapsed, obviously!
 				continue
-			neighbors = self.grid_graph.neighbors(node)
+			neighbors = list(self.grid_graph.neighbors(node))
 			if len(neighbors) == 2: #Connect the neighbors of the valence-2 node by an edge
 				self.grid_graph.add_edge(*neighbors)
 			if len(neighbors) <= 2:
@@ -161,7 +161,7 @@ class PixelData(object):
 			self.grid_graph.remove_node(node)
 
 		# Update pixel corner sets.
-		for node, attrs in self.pixel_graph.nodes_iter(data=True):
+		for node, attrs in self.pixel_graph.nodes(data=True):
 			corners = attrs['corners']
 			for corner in corners.copy():
 				if corner not in self.grid_graph:
@@ -220,7 +220,7 @@ class PixelData(object):
 			pixels = set()
 			value = None
 			corners = set()
-			for pixel, attrs in pcg.nodes_iter(data=True):
+			for pixel, attrs in pcg.nodes(data=True):
 				pixels.add(pixel)
 				corners.update(attrs['corners'])
 				value = attrs['value']
@@ -231,7 +231,7 @@ class PixelData(object):
 	def get_boundaries(self):
 		# Remove internal edges from a copy of our pixgrid graph and just get the boundaries
 		self.outlines_graph = networkx.Graph(self.grid_graph)
-		for pixel, attrs in self.pixel_graph.nodes_iter(data=True):
+		for pixel, attrs in self.pixel_graph.nodes(data=True):
 			corners = attrs['corners']
 			for neighbor in self.pixel_graph.neighbors(pixel):
 				edge = corners & self.pixel_graph.node[neighbor]['corners']
@@ -239,7 +239,7 @@ class PixelData(object):
 					print edge
 				elif self.outlines_graph.has_edge(*edge): # Remove the internal edges in the outlines graph
 					self.outlines_graph.remove_edge(*edge)
-		for node in networkx.isolates(self.outlines_graph):
+		for node in list(networkx.isolates(self.outlines_graph)):
 			self.outlines_graph.remove_node(node) # Remove the nodes from the outline graph too
 
 	def make_path(self, graph):
@@ -273,4 +273,3 @@ class PixelData(object):
 				path.smooth = path.spline.copy()
 				continue
 			path.smooth_spline() # Smooth each path which was previosuly fit with a spline
-
