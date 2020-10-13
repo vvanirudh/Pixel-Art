@@ -39,4 +39,4 @@ Authors
 =======
 *Anirudh Vemula, Vamsidhar Yeddu*
 
-Computer Science, IIT Bombay
+Computer Science & Engineering, IIT Bombay
