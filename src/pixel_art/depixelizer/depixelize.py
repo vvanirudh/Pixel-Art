@@ -4,9 +4,12 @@ from pixel_art.io import read_png, get_writer
 from .pixel_data import PixelData
 
 class Depixelize():
-    def __init__(self, filename, output_dir):
+    def __init__(self, filename, output_dir=None):
         self.filename = filename
-        self.output_dir = output_dir
+        if output_dir:
+            self.output_dir = output_dir
+        else:
+            self.output_dir = os.getcwd()
     
     def run(self):
         self.pixel_data = PixelData(read_png(self.filename))

@@ -1,3 +1,4 @@
+from importlib.metadata import entry_points
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -14,6 +15,9 @@ setuptools.setup(
     url="https://github.com/vvanirudh/Pixel-Art",
     project_urls={
         "Bug Tracker": "https://github.com/vvanirudh/Pixel-Art/issues",
+    },
+    entry_points={
+        "console_scripts": ["depixelize=pixel_art.cmd:depixelize_fn"],
     },
     classifiers=["Programming Language :: Python :: 3"],
     package_dir={"": "src"},
