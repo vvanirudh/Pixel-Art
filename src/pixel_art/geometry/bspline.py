@@ -1,5 +1,5 @@
 from math import sqrt
-from point import Point
+from .point import Point
 
 
 class BSpline(object):
