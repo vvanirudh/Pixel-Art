@@ -4,9 +4,12 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+with open("VERSION", "r", encoding="utf-8") as fh:
+    version = fh.read()
+
 setuptools.setup(
     name="depixelizer",
-    version="0.0.1",
+    version=version,
     author="Anirudh Vemula, Vamsidhar Yeddu",
     author_email="vvanirudh@gmail.com, vamsidhar666@gmail.com",
     description="An implementation of the paper Depixelizing Pixel Art by Kopf and Lischinski.",
