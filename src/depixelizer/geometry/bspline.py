@@ -1,6 +1,5 @@
-import random
-from math import sqrt, sin, cos, pi
-from point import Point
+from math import sqrt
+from .point import Point
 
 
 class BSpline(object):
@@ -14,8 +13,10 @@ class BSpline(object):
         if degree is None:
             degree = expected_degree
         if degree != expected_degree:
-            raise ValueError("Degree expected is %s, got %s instead as Input." % (
-                expected_degree, degree))
+            raise ValueError(
+                "Degree expected is %s, got %s instead as Input."
+                % (expected_degree, degree)
+            )
         self.degree = degree
         self.remove_stored()
 
@@ -30,7 +31,11 @@ class BSpline(object):
 
     def __str__(self):
         return "<%s degree=%s, points=%s, KnotVector=%s>" % (
-            type(self).__name__, self.degree, len(self.points), len(self.KnotVector))
+            type(self).__name__,
+            self.degree,
+            len(self.points),
+            len(self.KnotVector),
+        )
 
     def copy(self):
         #   Copy Constructor
@@ -39,7 +44,10 @@ class BSpline(object):
     # Few properties to ease syntax
     @property
     def domain(self):
-        return (self.KnotVector[self.degree], self.KnotVector[len(self.KnotVector) - self.degree - 1])
+        return (
+            self.KnotVector[self.degree],
+            self.KnotVector[len(self.KnotVector) - self.degree - 1],
+        )
 
     @property
     def points(self):
@@ -62,19 +70,26 @@ class BSpline(object):
             if k == len(self.points):
                 k -= 1
             return self.points[k]
-        ps = [dict(zip(range(k - self.degree, k - s + 1),
-                       self.points[k - self.degree:k - s + 1]))]
+        ps = [
+            dict(
+                zip(
+                    range(k - self.degree, k - s + 1),
+                    self.points[k - self.degree : k - s + 1],
+                )
+            )
+        ]
 
         for r in range(1, self.degree - s + 1):
             ps.append({})
             for i in range(k - self.degree + r, k - s + 1):
-                a = (u - self.KnotVector[i]) / (self.KnotVector[i +
-                                                                self.degree - r + 1] - self.KnotVector[i])
+                a = (u - self.KnotVector[i]) / (
+                    self.KnotVector[i + self.degree - r + 1] - self.KnotVector[i]
+                )
                 ps[r][i] = (1 - a) * ps[r - 1][i - 1] + a * ps[r - 1][i]
         return ps[-1][k - s]
 
     def Quadratic_Bezier_Fit(self):
-        #	Finding a series of quadratic Beziers making up this spline.
+        # 	Finding a series of quadratic Beziers making up this spline.
         assert self.degree == 2
         control_points = self.points[1:-1]
         on_curve_points = [self(u) for u in self.KnotVector[2:-2]]
@@ -86,7 +101,7 @@ class BSpline(object):
 
     def Derivative(self):
         #   Returns the derivative of the curve, more Math!
-        cached = self.storedvalue.get('1')
+        cached = self.storedvalue.get("1")
         if cached:
             return cached
 
@@ -97,14 +112,17 @@ class BSpline(object):
             new_points.append(coeff * (self.points[i + 1] - self.points[i]))
 
         cached = BSpline(self.KnotVector[1:-1], new_points, p - 1)
-        self.storedvalue['1'] = cached
+        self.storedvalue["1"] = cached
         return cached
 
     def Clamp(self, value):
         return max(self.domain[0], min(self.domain[1], value))
 
     def Span(self, index):
-        return (self.Clamp(self.KnotVector[index]), self.Clamp(self.KnotVector[index + 1]))
+        return (
+            self.Clamp(self.KnotVector[index]),
+            self.Clamp(self.KnotVector[index + 1]),
+        )
 
     def Points_In_Span(self, index):
         return [self.Span(index + i) for i in range(self.degree)]
@@ -133,7 +151,7 @@ class BSpline(object):
         d1 = self.Derivative()(u)
         d2 = self.Derivative().Derivative()(u)
         numerator = d1.x * d2.y - d1.y * d2.x
-        denominator = sqrt(d1.x ** 2 + d1.y ** 2) ** 3
+        denominator = sqrt(d1.x**2 + d1.y**2) ** 3
         if denominator == 0:
             return 0
         return abs(numerator / denominator)
@@ -143,7 +161,11 @@ class BSpline(object):
         return self.Integrate(index, self.Curvature, intervals_per_span)
 
     def reversed(self):
-        return type(self)((1 - k for k in reversed(self.KnotVector)), reversed(self._points), self.degree)
+        return type(self)(
+            (1 - k for k in reversed(self.KnotVector)),
+            reversed(self._points),
+            self.degree,
+        )
 
 
 class Closed_BSpline(BSpline):
@@ -155,9 +177,8 @@ class Closed_BSpline(BSpline):
 
     def Wrap_check(self):
         # Checks the closed-ness of the spline
-        if self._points[:self.degree] != self._points[-self.degree:]:
-            raise ValueError("Points not wrapped at degree %s." %
-                             (self.degree,))
+        if self._points[: self.degree] != self._points[-self.degree :]:
+            raise ValueError("Points not wrapped at degree %s." % (self.degree,))
 
     def Move(self, index, value):
         # Moves the spline according to the change in position of a control point
@@ -166,15 +187,16 @@ class Closed_BSpline(BSpline):
         index = index % self._unwrapped_len
         super(Closed_BSpline, self).Move(index, value)
         if index < self.degree:
-            super(Closed_BSpline, self).Move(
-                index + self._unwrapped_len, value)
+            super(Closed_BSpline, self).Move(index + self._unwrapped_len, value)
 
     @property
     def useful_points(self):
-        return self.points[:-self.degree]
+        return self.points[: -self.degree]
 
     def Span(self, index):
-        def span(i): return (self.KnotVector[i], self.KnotVector[i + 1])
+        def span(i):
+            return (self.KnotVector[i], self.KnotVector[i + 1])
+
         d0, d1 = span(index)
         if d0 < self.domain[0]:
             d0, d1 = span(index + len(self.points) - self.degree)

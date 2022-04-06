@@ -1,29 +1,40 @@
-An implementation of the paper **Depixelizing Pixel Art** by Kopf and Lischinski. The implementation is purely in python and instructions are given below.
+## DEPIXELIZING PIXEL ART
 
-![example_image](outputs/win31_setup_input.png)
+An implementation of the paper *Depixelizing Pixel Art* by Kopf and Lischinski. The implementation is purely in python.
 
-Instructions to run
-===================
+#### INSTALLATION AND USAGE:
 
-The implementation can be run by using the command "python main.py" wherein, the command line asks you to enter the path of the input image.
+Install via pip:
+<pre>
+    <code>pip install depixelizer</code>
+</pre>
 
-The output image will be created with the same name as the input image in the "outputs/" folder (except with a .svg extension).
+Use in code:
+<pre><code>
+    from depixelizer import Depixelize
+    Depixelize(input_image_path, output_dir).run()
+</code></pre>
 
-Depending on the input file's dimensions, the running time can be long. 
+or via command-line:
+<pre><code>
+    usage: depixelize [-h] [--output_dir OUTPUT_DIR] image_path
 
-There are sample testcases (around 25) in the "testcases/" folder.
+    positional arguments:
+    image_path            Input Pixel Art Image
 
-You can view some of the outputs that we have got, in the "outputs/" folder.
+    optional arguments:
+    -h, --help            show this help message and exit
+    --output_dir OUTPUT_DIR
+                            Output Dir, defaults to os.cwd()
+</code></pre>
 
-Requirements
-============
-- Python 2.7
+#### Requirements
+- Python
 - `pypng` : https://pypi.python.org/pypi/pypng
 - `networkx`: https://pypi.python.org/pypi/networkx/
 - `svgwrite` : https://pypi.python.org/pypi/svgwrite/
 
-Citations
-=========
+#### Citations
 
 - https://johanneskopf.de/publications/pixelart/paper/pixel.pdf
 - https://github.com/gityou/depixelize
@@ -35,8 +46,7 @@ Citations
 - http://vinipsmaker.wordpress.com/2013/07/21/splines-extraction-on-kopf-lischinski-algorithm-part-1/
 - http://vinipsmaker.wordpress.com/2013/08/13/splines-extraction-on-kopf-lischinski-algorithm-part-2/
 
-Authors
-=======
+#### Authors
 *Anirudh Vemula, Vamsidhar Yeddu*
 
 Computer Science & Engineering, IIT Bombay

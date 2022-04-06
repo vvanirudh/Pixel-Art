@@ -1,4 +1,4 @@
-import png  # Using pypng module
+import png  # pypng
 
 
 def read_png(filename):
