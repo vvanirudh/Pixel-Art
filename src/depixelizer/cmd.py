@@ -1,4 +1,4 @@
-from pixel_art import Depixelize
+from depixelizer import Depixelize
 import argparse
 
 parser = argparse.ArgumentParser()

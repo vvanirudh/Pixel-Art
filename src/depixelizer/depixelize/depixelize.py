@@ -1,6 +1,6 @@
 import os
 
-from pixel_art.io import read_png, get_writer
+from depixelizer.io import read_png, get_writer
 from .pixel_data import PixelData
 
 class Depixelize():

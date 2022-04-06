@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pixel_art",
+    name="depixelizer",
     version="0.0.1",
     author="Anirudh Vemula, Vamsidhar Yeddu",
     author_email="vvanirudh@gmail.com, vamsidhar666@gmail.com",
@@ -17,7 +17,7 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/vvanirudh/Pixel-Art/issues",
     },
     entry_points={
-        "console_scripts": ["depixelize=pixel_art.cmd:depixelize_fn"],
+        "console_scripts": ["depixelize=depixelizer.cmd:depixelize_fn"],
     },
     classifiers=["Programming Language :: Python :: 3"],
     package_dir={"": "src"},

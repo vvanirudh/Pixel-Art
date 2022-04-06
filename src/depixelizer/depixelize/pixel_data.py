@@ -2,7 +2,7 @@ import networkx
 from math import sqrt
 
 from .heuristic import Heuristics, check_bounds
-from pixel_art.geometry import Shape, Path
+from depixelizer.geometry import Shape, Path
 
 # This generates all the coordinates from 0 to width and 0 to height i.e. it creates a walk over all pixels
 def coordinates(size):
