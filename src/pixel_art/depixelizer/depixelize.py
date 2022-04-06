@@ -12,7 +12,7 @@ class Depixelize():
         self.pixel_data = PixelData(read_png(self.filename))
         file_name = os.path.basename(self.filename).split(".")[0]
         self.pixel_data.depixelize()
-        output_filepath = os.path.join(self.output_dir, f"{file_name}.svg")
+        output_filepath = os.path.join(self.output_dir, file_name)
         writer = get_writer(self.pixel_data, output_filepath)
         writer.output_image()
         
