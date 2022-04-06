@@ -1,26 +1,20 @@
-DEPIXELIZING PIXEL ART
-======================
+## DEPIXELIZING PIXEL ART
 
-An implementation of the paper *Depixelizing Pixel Art* by Kopf and Lischinski. The implementation is purely in python and instructions are given below.
+An implementation of the paper *Depixelizing Pixel Art* by Kopf and Lischinski. The implementation is purely in python.
 
-![example_image](outputs/win31_setup_input.svg)
-
-Instructions to run
-
+#### INSTALLATION AND USAGE:
 <pre><code>
-    from pixel_art import Depixelize
-    Depixelize(input_image_path, output_dir).run()
+from pixel_art import Depixelize
+Depixelize(input_image_path, output_dir).run()
 </code></pre>
 
-Requirements
-============
+#### Requirements
 - Python
 - `pypng` : https://pypi.python.org/pypi/pypng
 - `networkx`: https://pypi.python.org/pypi/networkx/
 - `svgwrite` : https://pypi.python.org/pypi/svgwrite/
 
-Citations
-=========
+#### Citations
 
 - https://johanneskopf.de/publications/pixelart/paper/pixel.pdf
 - https://github.com/gityou/depixelize
@@ -32,8 +26,7 @@ Citations
 - http://vinipsmaker.wordpress.com/2013/07/21/splines-extraction-on-kopf-lischinski-algorithm-part-1/
 - http://vinipsmaker.wordpress.com/2013/08/13/splines-extraction-on-kopf-lischinski-algorithm-part-2/
 
-Authors
-=======
+#### Authors
 *Anirudh Vemula, Vamsidhar Yeddu*
 
 Computer Science & Engineering, IIT Bombay
