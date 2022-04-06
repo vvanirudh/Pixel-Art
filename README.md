@@ -1,23 +1,20 @@
-An implementation of the paper **Depixelizing Pixel Art** by Kopf and Lischinski. The implementation is purely in python and instructions are given below.
+DEPIXELIZING PIXEL ART
+======================
 
-![example_image](outputs/win31_setup_input.png)
+An implementation of the paper *Depixelizing Pixel Art* by Kopf and Lischinski. The implementation is purely in python and instructions are given below.
+
+![example_image](outputs/win31_setup_input.svg)
 
 Instructions to run
-===================
 
-The implementation can be run by using the command "python main.py" wherein, the command line asks you to enter the path of the input image.
-
-The output image will be created with the same name as the input image in the "outputs/" folder (except with a .svg extension).
-
-Depending on the input file's dimensions, the running time can be long. 
-
-There are sample testcases (around 25) in the "testcases/" folder.
-
-You can view some of the outputs that we have got, in the "outputs/" folder.
+<pre><code>
+    from pixel_art import Depixelize
+    Depixelize(input_image_path, output_dir).run()
+</code></pre>
 
 Requirements
 ============
-- Python 2.7
+- Python
 - `pypng` : https://pypi.python.org/pypi/pypng
 - `networkx`: https://pypi.python.org/pypi/networkx/
 - `svgwrite` : https://pypi.python.org/pypi/svgwrite/
