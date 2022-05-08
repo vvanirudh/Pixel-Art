@@ -1,4 +1,3 @@
-from importlib.metadata import entry_points
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
