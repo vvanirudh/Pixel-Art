@@ -1,6 +1,8 @@
 ## DEPIXELIZING PIXEL ART
 
 An implementation of the paper *Depixelizing Pixel Art* by Kopf and Lischinski. The implementation is purely in python.
+<img width="1011" alt="Screen Shot 2022-08-19 at 1 33 30 PM" src="https://user-images.githubusercontent.com/1688510/185675551-27e94ab8-3ee6-4307-9ddc-832935d6931e.png">
+
 
 #### INSTALLATION AND USAGE:
 
